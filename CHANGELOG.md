@@ -2,6 +2,12 @@
 
 Skrá yfir helstu breytingar á síðunni, nýjustu efst.
 
+## 2026-08-17 — Nýr texti um alla síðuna
+- Allur meginmálstexti endurskrifaður: efst (hero), "Af hverju Vippi?", myndasafn, litir, verð, pöntunarhluti, "Uppruni og þjónusta" og fótur.
+- Fótur fékk raunverulegt heimilisfang og símanúmer (Barðastaðir 1–5 · 112 Reykjavík · 557 6050), og ný tengla­röð: vippi.no, Persónuvernd, Pöntunarbeiðni.
+- Verðtextinn núna í samræmi við að magnafsláttur miðist við heildarfjölda stóla óháð litum.
+- Athugið: "Persónuvernd" í fótnum og undir pöntunarhnappnum vísar ekki enn á neitt — vantar staðfesta persónuverndarsíðu/-texta.
+
 ## 2026-08-17 — Vsk-rofinn fylgir með í skrolli
 - `.vat-bar` og `.site-header` sett saman í eitt sticky-svæði (`.site-top`) svo "Með vsk / Án vsk" hnappurinn sé alltaf sýnilegur, ekki bara efst á síðu.
 

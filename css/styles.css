@@ -805,6 +805,12 @@ input:focus, select:focus, textarea:focus {
 .checkout-fields[hidden] { display: none; }
 .checkout-fields .form-row:first-child { margin-top: 0; }
 
+.consent-note {
+  margin: 0.9em 0 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
 .buyer-type-toggle {
   display: inline-flex;
   border: 1.5px solid var(--line);
@@ -898,6 +904,8 @@ input:focus, select:focus, textarea:focus {
   flex-wrap: wrap;
   font-weight: 600;
 }
+
+.footer-links-static { color: var(--ink-soft); }
 
 .footer-copy {
   text-align: center;
