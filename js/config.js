@@ -39,6 +39,12 @@ const VIPPI_CONFIG = {
   // út fyrir raunveruleg verð þegar þau liggja fyrir. Verð eru í ISK og
   // "pricePerUnit" er verð á stól innan hvers magnbils.
   currency: "kr.",
+
+  // Öll verð í priceTiers hér fyrir neðan eru skráð MEÐ vsk (24%, almennt
+  // vsk-þrep á Íslandi). Vefsíðan reiknar sjálf verð án vsk fyrir vsk-hnappinn
+  // efst á síðunni — það þarf ekki að skrá verðin tvisvar.
+  vatRate: 0.24,
+
   priceTiers: [
     { minQty: 1, maxQty: 1, pricePerUnit: 24900, label: "1 stk" },
     { minQty: 2, maxQty: 4, pricePerUnit: 22900, label: "2–4 stk" },

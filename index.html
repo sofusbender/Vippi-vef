@@ -12,6 +12,22 @@
 
 <a class="skip-link" href="#main">Fara beint í efni</a>
 
+<div class="vat-bar">
+  <div class="wrap vat-bar-inner">
+    <span class="vat-bar-label">Verð birt:</span>
+    <div class="vat-toggle" id="vat-toggle" role="radiogroup" aria-label="Verð með eða án vsk">
+      <label class="vat-toggle-option">
+        <input type="radio" name="vat-display" value="with" checked>
+        <span>Með vsk</span>
+      </label>
+      <label class="vat-toggle-option">
+        <input type="radio" name="vat-display" value="without">
+        <span>Án vsk</span>
+      </label>
+    </div>
+  </div>
+</div>
+
 <header class="site-header" id="top">
   <div class="wrap header-inner">
     <a href="#top" class="brand">
@@ -26,11 +42,44 @@
       <a href="#panta" class="nav-cta">Panta núna</a>
     </nav>
 
-    <button class="nav-toggle" id="nav-toggle" aria-label="Opna valmynd" aria-expanded="false" aria-controls="main-nav">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="header-actions">
+      <button class="cart-button" id="cart-toggle" type="button" aria-haspopup="dialog" aria-controls="cart-drawer" aria-label="Opna körfu">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="19" cy="21" r="1"></circle>
+          <path d="M2.5 3h2l2.7 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.6L21.5 8H6"></path>
+        </svg>
+        <span class="cart-count" id="cart-count" hidden>0</span>
+      </button>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Opna valmynd" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
+
+<div class="cart-overlay" id="cart-overlay" hidden></div>
+<aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-label="Karfan þín" hidden>
+  <div class="cart-drawer-header">
+    <h2>Karfan þín</h2>
+    <button class="cart-close" id="cart-close" type="button" aria-label="Loka körfu">&times;</button>
+  </div>
+
+  <p class="cart-empty" id="cart-empty">Karfan er tóm. Veldu lit og magn til að byrja.</p>
+
+  <div class="cart-lines" id="cart-lines">
+    <!-- fyllt út af js/main.js -->
+  </div>
+
+  <div class="cart-footer" id="cart-footer" hidden>
+    <div class="cart-total-row">
+      <span>Samtals <small id="cart-vat-note"></small></span>
+      <strong id="cart-total">0 kr.</strong>
+    </div>
+    <a href="#panta" class="btn btn-primary btn-block" id="cart-checkout-btn">Ganga frá pöntun</a>
+  </div>
+</aside>
 
 <main id="main">
 
@@ -138,6 +187,16 @@
         <div class="color-preview">
           <img id="color-preview-img" src="Myndir/vippi_0039-Edit.jpg" alt="Vippi stóll">
           <p class="color-preview-name" id="color-preview-name">Blátt</p>
+
+          <div class="color-add">
+            <div class="qty-stepper" role="group" aria-label="Fjöldi">
+              <button type="button" class="qty-btn" id="color-qty-minus" aria-label="Fækka">−</button>
+              <input type="number" id="color-qty" value="1" min="1" inputmode="numeric" aria-label="Fjöldi">
+              <button type="button" class="qty-btn" id="color-qty-plus" aria-label="Fjölga">+</button>
+            </div>
+            <button type="button" class="btn btn-primary" id="add-to-cart-btn">Bæta í körfu</button>
+          </div>
+          <p class="add-to-cart-status" id="add-to-cart-status" role="status" aria-live="polite"></p>
         </div>
 
         <div class="color-swatches" id="color-swatches" role="listbox" aria-label="Veldu lit">
@@ -156,6 +215,8 @@
       <div class="pricing-table" id="pricing-table">
         <!-- fyllt út með js/main.js út frá VIPPI_CONFIG.priceTiers -->
       </div>
+
+      <p class="vat-note" id="vat-note"></p>
 
       <p class="pricing-note">
         Verð miðast við einn lit í hverri pöntun. Óskir þú eftir sérstöku tilboði fyrir stórar
@@ -178,56 +239,84 @@
         <ul class="order-points">
           <li>Engin kortagreiðsla á vefnum — við höfum samband við þig</li>
           <li>Pöntunin fer beint til Bender ehf, umboðsaðila Vippi á Íslandi</li>
-          <li>Magnafsláttur reiknast sjálfkrafa út frá fjölda</li>
+          <li>Magnafsláttur reiknast sjálfkrafa út frá heildarfjölda í körfunni</li>
         </ul>
       </div>
 
       <form class="order-form" id="order-form">
-        <div class="form-row">
-          <label for="f-name">Nafn</label>
-          <input type="text" id="f-name" name="Nafn" required autocomplete="name">
+        <h3 class="checkout-heading">Pöntunin þín</h3>
+
+        <p class="checkout-empty-note" id="checkout-empty-note">
+          Karfan er tóm — farðu í <a href="#litir">Litir</a> og bættu stól í körfuna áður en þú sendir pöntun.
+        </p>
+
+        <div class="checkout-lines" id="checkout-lines">
+          <!-- fyllt út af js/main.js út frá körfunni -->
         </div>
 
-        <div class="form-row two-col">
-          <div>
-            <label for="f-email">Netfang</label>
-            <input type="email" id="f-email" name="Netfang" required autocomplete="email">
+        <div class="checkout-total-row" id="checkout-total-row" hidden>
+          <span>Samtals <small id="checkout-vat-note"></small></span>
+          <strong id="checkout-total">0 kr.</strong>
+        </div>
+
+        <div class="checkout-fields" id="checkout-fields" hidden>
+          <div class="form-row">
+            <label>Kaupandi</label>
+            <div class="buyer-type-toggle" id="buyer-type-toggle" role="radiogroup" aria-label="Kaupandi">
+              <label class="buyer-type-option">
+                <input type="radio" name="Kaupandi" value="Einstaklingur" checked>
+                <span>Einstaklingur</span>
+              </label>
+              <label class="buyer-type-option">
+                <input type="radio" name="Kaupandi" value="Fyrirtæki">
+                <span>Fyrirtæki</span>
+              </label>
+            </div>
           </div>
-          <div>
-            <label for="f-phone">Sími</label>
-            <input type="tel" id="f-phone" name="Sími" required autocomplete="tel">
+
+          <div class="form-row" id="company-name-row" hidden>
+            <label for="f-company">Nafn fyrirtækis</label>
+            <input type="text" id="f-company" name="Fyrirtæki_nafn" autocomplete="organization">
           </div>
-        </div>
 
-        <div class="form-row">
-          <label for="f-address">Heimilisfang / afhendingarstaður</label>
-          <textarea id="f-address" name="Afhendingarstaður" rows="2" required></textarea>
-        </div>
-
-        <div class="form-row two-col">
-          <div>
-            <label for="f-color">Litur</label>
-            <select id="f-color" name="Litur" required></select>
+          <div class="form-row two-col">
+            <div>
+              <label for="f-name" id="f-name-label">Nafn</label>
+              <input type="text" id="f-name" name="Nafn" required autocomplete="name">
+            </div>
+            <div>
+              <label for="f-kennitala">Kennitala</label>
+              <input type="text" id="f-kennitala" name="Kennitala" required inputmode="numeric" autocomplete="off" placeholder="000000-0000" pattern="\d{6}-?\d{4}">
+            </div>
           </div>
-          <div>
-            <label for="f-qty">Fjöldi</label>
-            <input type="number" id="f-qty" name="Fjöldi" min="1" value="1" required>
+
+          <div class="form-row two-col">
+            <div>
+              <label for="f-email">Netfang</label>
+              <input type="email" id="f-email" name="Netfang" required autocomplete="email">
+            </div>
+            <div>
+              <label for="f-phone">Sími</label>
+              <input type="tel" id="f-phone" name="Sími" required autocomplete="tel">
+            </div>
           </div>
+
+          <div class="form-row">
+            <label for="f-address">Heimilisfang / afhendingarstaður</label>
+            <textarea id="f-address" name="Afhendingarstaður" rows="2" required></textarea>
+          </div>
+
+          <div class="form-row">
+            <label for="f-note">Athugasemd (valfrjálst)</label>
+            <textarea id="f-note" name="Athugasemd" rows="2"></textarea>
+          </div>
+
+          <input type="hidden" name="Pöntun" id="f-order-hidden">
+          <input type="hidden" name="Áætlað_verð" id="f-price-hidden">
+          <input type="hidden" name="_subject" value="Ný Vippi pöntun af vefsíðu">
+
+          <button type="submit" class="btn btn-primary btn-block" id="order-submit">Senda pöntun</button>
         </div>
-
-        <div class="form-row">
-          <label for="f-note">Athugasemd (valfrjálst)</label>
-          <textarea id="f-note" name="Athugasemd" rows="2"></textarea>
-        </div>
-
-        <input type="hidden" name="Áætlað_verð" id="f-price-hidden">
-        <input type="hidden" name="_subject" value="Ný Vippi pöntun af vefsíðu">
-
-        <div class="order-summary" id="order-summary">
-          Áætlað verð: <strong id="order-total">—</strong>
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-block" id="order-submit">Senda pöntun</button>
 
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
