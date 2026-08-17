@@ -2,6 +2,11 @@
 
 Skrá yfir helstu breytingar á síðunni, nýjustu efst.
 
+## 2026-08-17 — Persónuverndarsíða
+- Ný síða `personuvernd.html`: hvaða upplýsingar eru skráðar (karfa/vsk-val eingöngu staðbundið í vafra, pöntunargögn þegar beiðni er send), til hvers þær eru notaðar, hvernig þær berast (Formspree/mailto), varðveislutími og réttindi.
+- Byggð sjálfstætt fyrir þessa síðu frekar en að afrita vafrakökustefnu AJ Vörulistinn beint — sú skrá telur upp sértæk mælingar-/auglýsingakökur (Google Analytics, Facebook, Reddit o.fl.) sem eiga ekki við hér, enda notar þessi síða engar slíkar vefkökur.
+- "Persónuvernd" í fótnum og undir pöntunarhnappnum tengt við nýju síðuna.
+
 ## 2026-08-17 — Nýr texti um alla síðuna
 - Allur meginmálstexti endurskrifaður: efst (hero), "Af hverju Vippi?", myndasafn, litir, verð, pöntunarhluti, "Uppruni og þjónusta" og fótur.
 - Fótur fékk raunverulegt heimilisfang og símanúmer (Barðastaðir 1–5 · 112 Reykjavík · 557 6050), og ný tengla­röð: vippi.no, Persónuvernd, Pöntunarbeiðni.
