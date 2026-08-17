@@ -12,52 +12,54 @@
 
 <a class="skip-link" href="#main">Fara beint í efni</a>
 
-<div class="vat-bar">
-  <div class="wrap vat-bar-inner">
-    <span class="vat-bar-label">Verð birt:</span>
-    <div class="vat-toggle" id="vat-toggle" role="radiogroup" aria-label="Verð með eða án vsk">
-      <label class="vat-toggle-option">
-        <input type="radio" name="vat-display" value="with" checked>
-        <span>Með vsk</span>
-      </label>
-      <label class="vat-toggle-option">
-        <input type="radio" name="vat-display" value="without">
-        <span>Án vsk</span>
-      </label>
+<div class="site-top">
+  <div class="vat-bar">
+    <div class="wrap vat-bar-inner">
+      <span class="vat-bar-label">Verð birt:</span>
+      <div class="vat-toggle" id="vat-toggle" role="radiogroup" aria-label="Verð með eða án vsk">
+        <label class="vat-toggle-option">
+          <input type="radio" name="vat-display" value="with" checked>
+          <span>Með vsk</span>
+        </label>
+        <label class="vat-toggle-option">
+          <input type="radio" name="vat-display" value="without">
+          <span>Án vsk</span>
+        </label>
+      </div>
     </div>
   </div>
+
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a href="#top" class="brand">
+        <img src="Logo/Vippi_logo_m-illustrasjon.webp" alt="Vippi" class="brand-logo">
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <a href="#varan">Varan</a>
+        <a href="#litir">Litir</a>
+        <a href="#verd">Verð</a>
+        <a href="#um-vippi">Um Vippi</a>
+        <a href="#panta" class="nav-cta">Panta núna</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="cart-button" id="cart-toggle" type="button" aria-haspopup="dialog" aria-controls="cart-drawer" aria-label="Opna körfu">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="19" cy="21" r="1"></circle>
+            <path d="M2.5 3h2l2.7 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.6L21.5 8H6"></path>
+          </svg>
+          <span class="cart-count" id="cart-count" hidden>0</span>
+        </button>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Opna valmynd" aria-expanded="false" aria-controls="main-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 </div>
-
-<header class="site-header" id="top">
-  <div class="wrap header-inner">
-    <a href="#top" class="brand">
-      <img src="Logo/Vippi_logo_m-illustrasjon.webp" alt="Vippi" class="brand-logo">
-    </a>
-
-    <nav class="main-nav" id="main-nav">
-      <a href="#varan">Varan</a>
-      <a href="#litir">Litir</a>
-      <a href="#verd">Verð</a>
-      <a href="#um-vippi">Um Vippi</a>
-      <a href="#panta" class="nav-cta">Panta núna</a>
-    </nav>
-
-    <div class="header-actions">
-      <button class="cart-button" id="cart-toggle" type="button" aria-haspopup="dialog" aria-controls="cart-drawer" aria-label="Opna körfu">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="9" cy="21" r="1"></circle>
-          <circle cx="19" cy="21" r="1"></circle>
-          <path d="M2.5 3h2l2.7 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.6L21.5 8H6"></path>
-        </svg>
-        <span class="cart-count" id="cart-count" hidden>0</span>
-      </button>
-
-      <button class="nav-toggle" id="nav-toggle" aria-label="Opna valmynd" aria-expanded="false" aria-controls="main-nav">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
 
 <div class="cart-overlay" id="cart-overlay" hidden></div>
 <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-label="Karfan þín" hidden>
